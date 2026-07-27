@@ -28,26 +28,26 @@ export default async function ListaClientes({
   }
 
   return (
-    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-3">
-  <div className="flex items-center space-x-3">
-    <h1 className="text-2xl sm:text-3xl font-bold">👥 Clientes</h1>
-    <a href="/" className="text-blue-500 hover:underline text-sm">
-      🏠 Início
-    </a>
-  </div>
-  <div className="flex flex-wrap gap-2">
-    <Link href="/processos/novo"
-      className="bg-green-500 text-white px-3 py-2 rounded-lg hover:bg-green-600 text-sm">
-      📄 Novo Processo
-    </Link>
-    <Link href="/clientes/novo"
-      className="bg-blue-500 text-white px-3 py-2 rounded-lg hover:bg-blue-600 text-sm">
-      ➕ Novo Cliente
-    </Link>
-  </div>
-</div>
+    <div className="p-4 sm:p-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-3">
+        <div className="flex items-center space-x-3">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Clientes</h1>
+          <a href="/" className="text-blue-600 hover:underline text-sm font-medium">
+            Início
+          </a>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+          <Link href="/processos/novo"
+            className="bg-green-600 text-white px-4 py-2.5 rounded-lg hover:bg-green-700 text-sm font-medium text-center">
+            Novo Processo
+          </Link>
+          <Link href="/clientes/novo"
+            className="bg-blue-600 text-white px-4 py-2.5 rounded-lg hover:bg-blue-700 text-sm font-medium text-center">
+            Novo Cliente
+          </Link>
+        </div>
+      </div>
 
-      {/* Campo de busca */}
       <form className="mb-6">
         <div className="flex gap-2">
           <input
@@ -55,22 +55,21 @@ export default async function ListaClientes({
             name="busca"
             defaultValue={busca || ''}
             placeholder="Buscar por nome, CPF, email ou telefone..."
-            className="flex-1 border rounded-lg p-3"
+            className="flex-1 border border-gray-300 rounded-lg p-3 text-gray-900"
           />
           <button type="submit"
-            className="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900">
-            🔍 Buscar
+            className="bg-gray-800 text-white px-4 py-3 rounded-lg hover:bg-gray-900 text-sm font-medium">
+            Buscar
           </button>
           {busca && (
             <Link href="/clientes"
-              className="bg-gray-300 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-400">
-              ✕ Limpar
+              className="bg-gray-200 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-300 text-sm font-medium">
+              Limpar
             </Link>
           )}
         </div>
       </form>
 
-      {/* Resultados */}
       {busca && (
         <p className="mb-4 text-gray-600">
           Resultados para: <strong>{busca}</strong> ({clientes.length} encontrados)
@@ -79,11 +78,11 @@ export default async function ListaClientes({
 
       {clientes.length === 0 ? (
         <div className="text-center text-gray-500 py-12">
-          <p className="text-xl">
+          <p className="text-lg">
             {busca ? 'Nenhum cliente encontrado' : 'Nenhum cliente cadastrado'}
           </p>
           {!busca && (
-            <Link href="/clientes/novo" className="text-blue-500 hover:underline mt-2 inline-block">
+            <Link href="/clientes/novo" className="text-blue-600 hover:underline mt-2 inline-block font-medium">
               Cadastrar primeiro cliente
             </Link>
           )}
@@ -91,34 +90,16 @@ export default async function ListaClientes({
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {clientes.map((cliente) => (
-            <div key={cliente.id} className="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
-              <h3 className="text-xl font-semibold mb-2">{cliente.nome}</h3>
-
-              {cliente.cpf && (
-                <p className="text-gray-600 text-sm mb-1">
-                  CPF: {cliente.cpf}
-                </p>
-              )}
-
-              {cliente.telefone && (
-                <p className="text-gray-600 text-sm mb-1">
-                  📞 {cliente.telefone}
-                </p>
-              )}
-
-              {cliente.email && (
-                <p className="text-gray-600 text-sm mb-3">
-                  ✉️ {cliente.email}
-                </p>
-              )}
-
-              <div className="flex space-x-2">
-                <Link href={`/clientes/${cliente.id}`}
-                  className="text-blue-500 hover:underline text-sm">
+            <div key={cliente.id} className="bg-white p-5 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">{cliente.nome}</h3>
+              {cliente.cpf && <p className="text-gray-600 text-sm mb-1">CPF: {cliente.cpf}</p>}
+              {cliente.telefone && <p className="text-gray-600 text-sm mb-1">📞 {cliente.telefone}</p>}
+              {cliente.email && <p className="text-gray-600 text-sm mb-3">✉️ {cliente.email}</p>}
+              <div className="flex gap-3">
+                <Link href={`/clientes/${cliente.id}`} className="text-blue-600 hover:underline text-sm font-medium">
                   Ver detalhes →
                 </Link>
-                <Link href={`/processos/novo?clienteId=${cliente.id}`}
-                  className="text-green-500 hover:underline text-sm">
+                <Link href={`/processos/novo?clienteId=${cliente.id}`} className="text-green-600 hover:underline text-sm font-medium">
                   + Processo
                 </Link>
               </div>
