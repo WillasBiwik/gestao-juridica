@@ -1,0 +1,92 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+   provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Cliente {
+  id            String      @id @default(cuid())
+  nome          String
+  telefone      String?
+  email         String?
+  whatsapp      String?
+  cep           String?
+  logradouro    String?
+  numero        String?
+  complemento   String?
+  bairro        String?
+  cidade        String?
+  estado        String?
+  cpf           String?
+  rg            String?
+  cnh           String?
+  outrosDocs    String?
+  processos     Processo[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model Processo {
+  id            String      @id @default(cuid())
+  numero        String      @unique
+  clienteId     String
+  cliente       Cliente     @relation(fields: [clienteId], references: [id])
+  tribunal      String?
+  vara          String?
+  tipoAcao      String?
+  status        String      @default("ativo")
+  descricao     String?
+  arquivos      Arquivo[]
+  pagamentos    Pagamento[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model Arquivo {
+  id            String      @id @default(cuid())
+  nome          String
+  url           String
+  tipo          String
+  tamanho       Int
+  processoId    String
+  processo      Processo    @relation(fields: [processoId], references: [id])
+  createdAt     DateTime    @default(now())
+}
+
+model Pagamento {
+  id              String      @id @default(cuid())
+  processoId      String
+  processo        Processo    @relation(fields: [processoId], references: [id])
+  valorTotal      Float
+  formaPagamento  String
+  parcelas        Int         @default(1)
+  valorParcela    Float?
+  observacoes     String?
+  status          String      @default("pendente")
+  parcelasRealizadas ParcelaRealizada[]
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+}
+
+model ParcelaRealizada {
+  id            String      @id @default(cuid())
+  pagamentoId   String
+  pagamento     Pagamento   @relation(fields: [pagamentoId], references: [id])
+  data          DateTime    @default(now())
+  valor         Float
+  metodo        String
+  comprovante   String?
+  observacao    String?
+}
+
+model Usuario {
+  id        String   @id @default(cuid())
+  nome      String
+  email     String   @unique
+  senha     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
