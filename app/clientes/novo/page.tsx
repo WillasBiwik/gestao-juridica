@@ -49,44 +49,44 @@ export default function NovoCliente() {
             <div>
               <label className="block mb-1">Nome *</label>
               <input {...register('nome')} required
-                className="w-full border rounded p-2" />
+                className="w-full border rounded p-2 text-gray-900" />
             </div>
             
             <div>
               <label className="block mb-1">CPF</label>
               <input {...register('cpf')}
-                className="w-full border rounded p-2"
+                className="w-full border rounded p-2 text-gray-900"
                 placeholder="000.000.000-00" />
             </div>
             
             <div>
               <label className="block mb-1">RG</label>
               <input {...register('rg')}
-                className="w-full border rounded p-2" />
+                className="w-full border rounded p-2 text-gray-900" />
             </div>
             
             <div>
               <label className="block mb-1">CNH</label>
               <input {...register('cnh')}
-                className="w-full border rounded p-2" />
+                className="w-full border rounded p-2 text-gray-900" />
             </div>
             
             <div>
               <label className="block mb-1">Telefone</label>
               <input {...register('telefone')}
-                className="w-full border rounded p-2" />
+                className="w-full border rounded p-2 text-gray-900" />
             </div>
             
             <div>
               <label className="block mb-1">WhatsApp</label>
               <input {...register('whatsapp')}
-                className="w-full border rounded p-2" />
+                className="w-full border rounded p-2 text-gray-900" />
             </div>
             
             <div className="md:col-span-2">
               <label className="block mb-1">Email</label>
               <input {...register('email')} type="email"
-                className="w-full border rounded p-2" />
+                className="w-full border rounded p-2 text-gray-900" />
             </div>
           </div>
         </div>
@@ -98,43 +98,43 @@ export default function NovoCliente() {
             <div>
               <label className="block mb-1">CEP</label>
               <input {...register('cep')}
-                className="w-full border rounded p-2" />
+                className="w-full border rounded p-2 text-gray-900" />
             </div>
             
             <div>
               <label className="block mb-1">Logradouro</label>
               <input {...register('logradouro')}
-                className="w-full border rounded p-2" />
+                className="w-full border rounded p-2 text-gray-900" />
             </div>
             
             <div>
               <label className="block mb-1">Número</label>
               <input {...register('numero')}
-                className="w-full border rounded p-2" />
+                className="w-full border rounded p-2 text-gray-900" />
             </div>
             
             <div>
               <label className="block mb-1">Complemento</label>
               <input {...register('complemento')}
-                className="w-full border rounded p-2" />
+                className="w-full border rounded p-2 text-gray-900" />
             </div>
             
             <div>
               <label className="block mb-1">Bairro</label>
               <input {...register('bairro')}
-                className="w-full border rounded p-2" />
+                className="w-full border rounded p-2 text-gray-900" />
             </div>
             
             <div>
               <label className="block mb-1">Cidade</label>
               <input {...register('cidade')}
-                className="w-full border rounded p-2" />
+                className="w-full border rounded p-2 text-gray-900" />
             </div>
             
             <div>
               <label className="block mb-1">Estado</label>
               <input {...register('estado')}
-                className="w-full border rounded p-2" />
+                className="w-full border rounded p-2 text-gray-900" />
             </div>
           </div>
         </div>
