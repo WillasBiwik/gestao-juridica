@@ -19,7 +19,6 @@ export async function POST(request: Request) {
     
     return NextResponse.json(processo, { status: 201 })
   } catch (error) {
-    console.error(error)
     return NextResponse.json(
       { error: 'Erro ao criar processo' },
       { status: 500 }
@@ -31,9 +30,7 @@ export async function GET() {
   try {
     const processos = await prisma.processo.findMany({
       include: {
-        cliente: {
-          select: { nome: true }
-        }
+        cliente: { select: { nome: true } }
       },
       orderBy: { createdAt: 'desc' }
     })
@@ -44,6 +41,8 @@ export async function GET() {
       { status: 500 }
     )
   }
+}
+
 export async function DELETE(request: Request) {
   try {
     const { id } = await request.json()

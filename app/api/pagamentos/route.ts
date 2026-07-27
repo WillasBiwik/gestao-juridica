@@ -23,7 +23,6 @@ export async function POST(request: Request) {
     
     return NextResponse.json(pagamento, { status: 201 })
   } catch (error) {
-    console.error(error)
     return NextResponse.json(
       { error: 'Erro ao criar pagamento' },
       { status: 500 }
@@ -38,9 +37,7 @@ export async function GET() {
         processo: {
           select: {
             numero: true,
-            cliente: {
-              select: { nome: true }
-            }
+            cliente: { select: { nome: true } }
           }
         }
       },
@@ -53,6 +50,8 @@ export async function GET() {
       { status: 500 }
     )
   }
+}
+
 export async function DELETE(request: Request) {
   try {
     const { id } = await request.json()
