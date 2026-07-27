@@ -28,21 +28,20 @@ export default async function ListaClientes({
   }
 
   return (
-    <div className="p-6">
-      <div className="flex justify-between items-center mb-6">
+    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-3">
   <div className="flex items-center space-x-3">
-    <h1 className="text-3xl font-bold">👥 Clientes</h1>
-    <Link href="/" className="text-blue-500 hover:underline text-sm">
+    <h1 className="text-2xl sm:text-3xl font-bold">👥 Clientes</h1>
+    <a href="/" className="text-blue-500 hover:underline text-sm">
       🏠 Início
-    </Link>
+    </a>
   </div>
-  <div className="space-x-2">
+  <div className="flex flex-wrap gap-2">
     <Link href="/processos/novo"
-      className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
+      className="bg-green-500 text-white px-3 py-2 rounded-lg hover:bg-green-600 text-sm">
       📄 Novo Processo
     </Link>
     <Link href="/clientes/novo"
-      className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+      className="bg-blue-500 text-white px-3 py-2 rounded-lg hover:bg-blue-600 text-sm">
       ➕ Novo Cliente
     </Link>
   </div>
